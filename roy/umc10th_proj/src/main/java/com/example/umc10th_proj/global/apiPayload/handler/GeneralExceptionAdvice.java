@@ -12,20 +12,28 @@ import com.example.umc10th_proj.global.apiPayload.exception.ProjectException;
 @RestControllerAdvice
 public class GeneralExceptionAdvice {
 
+    // 프로젝트에서 발생한 예외 처리
     @ExceptionHandler(ProjectException.class)
-    public ResponseEntity<ApiResponse<Void>> handleProjectException(ProjectException e) {
+    public ResponseEntity<ApiResponse<Void>> handleMemberException(
+            ProjectException e
+    ) {
         BaseErrorCode errorCode = e.getErrorCode();
         return ResponseEntity.status(errorCode.getStatus())
                 .body(ApiResponse.onFailure(errorCode, null));
     }
 
+    // 그 외의 정의되지 않은 모든 예외 처리
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ApiResponse<String>> handleException(Exception ex) {
-        BaseErrorCode code = GeneralErrorCode.INTERNAL_SERVER_ERROR;
+    public ResponseEntity<ApiResponse<String>> handleException(
+            Exception ex
+    ) {
 
-        // 보안 취약점 제거: ex.getMessage()를 절대 클라이언트에게 내려주지 않음
-        // 실제 운영에서는 여기서 log.error("Unhandled Exception: ", ex); 를 찍어야 함
+        BaseErrorCode code = GeneralErrorCode.INTERNAL_SERVER_ERROR;
         return ResponseEntity.status(code.getStatus())
-                .body(ApiResponse.onFailure(code, "서버 내부 오류가 발생했습니다."));
+                .body(ApiResponse.onFailure(
+                                code,
+                                ex.getMessage()
+                        )
+                );
     }
 }

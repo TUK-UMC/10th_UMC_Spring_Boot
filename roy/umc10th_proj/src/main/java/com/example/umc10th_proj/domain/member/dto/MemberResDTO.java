@@ -2,7 +2,7 @@ package com.example.umc10th_proj.domain.member.dto;
 
 import lombok.Builder;
 
-public class MemberResDTO {
+ public class MemberResDTO {
 
     @Builder
     public record GetInfo(

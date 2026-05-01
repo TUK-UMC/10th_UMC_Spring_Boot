@@ -1,9 +1,9 @@
 package com.example.umc10th_proj.domain.member.converter;
 
 import com.example.umc10th_proj.domain.member.dto.MemberResDTO;
+import com.example.umc10th_proj.domain.member.entity.Member;
 
-public class MemberConverter {
-    // 2. Converter 로직 (이전에 리뷰한 코드와 동일)
+ public class MemberConverter {
     // 마이페이지
     public static MemberResDTO.GetInfo toGetInfo(
             Member member
@@ -17,3 +17,16 @@ public class MemberConverter {
                 .build();
     }
 }
+
+//public class MemberConverter{
+//
+//    public static MemberResDTO.RequestBody toRequestBody(
+//            String stringTest,
+//            Long longTest
+//    ){
+//        return MemberResDTO.RequestBody.builder()
+//                .stringTest(stringTest)
+//                .longTest(longTest)
+//                .build();
+//    }
+//}

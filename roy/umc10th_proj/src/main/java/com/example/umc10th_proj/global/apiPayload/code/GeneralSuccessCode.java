@@ -1,5 +1,9 @@
 package com.example.umc10th_proj.global.apiPayload.code;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+
 @Getter
 @RequiredArgsConstructor
 public enum GeneralSuccessCode implements BaseSuccessCode {

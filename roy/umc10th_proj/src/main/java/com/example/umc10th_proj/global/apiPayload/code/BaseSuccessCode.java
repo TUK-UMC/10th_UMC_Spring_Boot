@@ -1,5 +1,7 @@
 package com.example.umc10th_proj.global.apiPayload.code;
 
+import org.springframework.http.HttpStatus;
+
 public interface BaseSuccessCode {
 
     HttpStatus getStatus();
