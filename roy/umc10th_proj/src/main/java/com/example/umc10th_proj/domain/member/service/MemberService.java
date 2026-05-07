@@ -16,7 +16,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     public MemberResDTO.GetInfo getInfo(MemberReqDTO.GetInfo dto) {
-        Member member = memberRepository.findById(dto.id())
+        Member member = memberRepository.findByNameAndDeletedAtIsNull("마크")
                 .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_FOUND));
         return MemberConverter.toGetInfo(member);
     }

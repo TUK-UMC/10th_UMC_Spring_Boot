@@ -1,10 +1,13 @@
 package com.example.umc10th_proj.domain.review.controller;
 
+import com.example.umc10th_proj.domain.review.converter.ReviewConverter;
 import com.example.umc10th_proj.domain.review.dto.ReviewReqDTO;
+import com.example.umc10th_proj.domain.review.dto.ReviewResDTO;
+import com.example.umc10th_proj.domain.review.entity.Review;
+import com.example.umc10th_proj.domain.review.service.ReviewService;
 import com.example.umc10th_proj.global.apiPayload.ApiResponse;
 import com.example.umc10th_proj.global.apiPayload.code.GeneralSuccessCode;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,13 +15,17 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/stores")
 public class ReviewController {
 
-    // 마이 페이지 리뷰 작성 (multipart/form-data)
-    @PostMapping(value = "/{storeId}/reviews", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ApiResponse<String> createReview(
+    private final ReviewService reviewService;
+
+    @PostMapping("/{storeId}/reviews")
+    public ApiResponse<ReviewResDTO.CreateReviewResult> createReview(
             @PathVariable(name = "storeId") Long storeId,
-            @ModelAttribute ReviewReqDTO.CreateReview request
+            @RequestBody ReviewReqDTO.CreateReview request
     ) {
-        // TODO: reviewService.createReview(storeId, request) 호출 로직 작성
-        return ApiResponse.onSuccess(GeneralSuccessCode.OK, "리뷰 작성 성공");
+        Review review = reviewService.createReview(storeId, 1L, request);
+        return ApiResponse.onSuccess(
+                GeneralSuccessCode.OK,
+                ReviewConverter.toCreateReviewResult(review)
+        );
     }
 }
