@@ -24,4 +24,9 @@ public class MemberController {
         BaseSuccessCode code = MemberSuccessCode.OK;
         return ApiResponse.onSuccess(code, memberService.getInfo(dto));
     }
+
+    @GetMapping("/v1/members/{memberId}")
+    public ApiResponse<MemberResDTO.GetInfo> getMyPageProfile(@PathVariable Long memberId) {
+        return ApiResponse.onSuccess(MemberSuccessCode.OK, memberService.getProfile(memberId));
+    }
 }

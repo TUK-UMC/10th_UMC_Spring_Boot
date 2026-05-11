@@ -1,4 +1,4 @@
-package com.example.toy.domain.member.entity;
+package com.example.toy.domain.mission.entity;
 
 import com.example.toy.global.common.BaseEntity;
 import jakarta.persistence.*;
@@ -9,8 +9,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-@Table(name = "food")
-public class Food extends BaseEntity {
+@Table(name = "region")
+public class Region extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
