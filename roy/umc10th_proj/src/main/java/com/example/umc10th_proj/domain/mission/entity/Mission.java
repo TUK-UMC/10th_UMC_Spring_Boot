@@ -25,7 +25,7 @@ public class Mission extends BaseEntity {
     @Column(name = "deadline", nullable = false) // NOT NULL 반영
     private LocalDate deadline;
 
-    @Column(name = "conditional", columnDefinition = "TEXT") // conditional 컬럼 사용
+    @Column(name = "mission_condition", columnDefinition = "TEXT")
     private String conditional;
 
     @Column(name = "point", nullable = false)

@@ -16,4 +16,12 @@ public interface MemberMissionRepository extends JpaRepository<MemberMission, Lo
             @Param("memberId") Long memberId,
             Pageable pageable
     );
+
+    @Query("SELECT mm FROM MemberMission mm " +
+            "WHERE mm.member.id = :memberId AND mm.isComplete = false " +
+            "ORDER BY mm.createdAt DESC")
+    Page<MemberMission> findInProgressMissionsByMemberId(
+            @Param("memberId") Long memberId,
+            Pageable pageable
+    );
 }

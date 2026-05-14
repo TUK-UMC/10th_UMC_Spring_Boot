@@ -12,6 +12,11 @@ public class MemberReqDTO {
             Long id
     ){}
 
+    @Getter
+    public static class GetMyInProgressMissionsDto {
+        private Long memberId;
+    }
+
     // 새로 추가된 회원가입용 DTO
     @Getter
     public static class JoinDto {
