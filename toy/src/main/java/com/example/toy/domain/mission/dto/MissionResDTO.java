@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class MissionResDTO {
 
@@ -29,4 +30,12 @@ public class MissionResDTO {
         private String missionSpec;
         private Integer reward;
     }
+
+    //Pagination DTO
+    @Builder
+    public record Pagination<T>(
+            List<T> data,
+            Integer pageNumber,
+            Integer pageSize
+    ){}
 }

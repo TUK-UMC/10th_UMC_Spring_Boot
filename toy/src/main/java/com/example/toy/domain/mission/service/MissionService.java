@@ -10,8 +10,11 @@ import com.example.toy.domain.mission.repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -24,10 +27,34 @@ public class MissionService {
         return missionRepository.findAllByRegionId(regionId, PageRequest.of(page - 1, 10));
     }
 
-    public Page<MissionResDTO.MyMissionDTO> getMyMissionList(Long memberId, String status, Integer page) {
+    //유저 미션 조회
+    public MissionResDTO.Pagination<MissionResDTO.MyMissionDTO> getMyMissionList(
+            Long memberId,
+            String status,
+            Integer pageSize,
+            Integer pageNumber,
+            String sort) {
+
+        Sort sortInfo;
+        if (sort != null){
+            sortInfo = Sort.by(sort);
+        } else {
+            sortInfo = Sort.by("id").descending();
+        }
+
+        PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sortInfo);
+
         MissionStatus missionStatus = MissionStatus.valueOf(status.toUpperCase());
-        Page<MemberMission> memberMissions = memberMissionRepository.findAllByMemberIdAndStatus(memberId, missionStatus, PageRequest.of(page - 1, 10));
-        return memberMissions.map(MissionConverter::toMyMissionDTO);
+
+        Page<MemberMission> memberMissions = memberMissionRepository.findAllByMemberIdAndStatus(memberId, missionStatus, pageRequest);
+
+        List<MissionResDTO.MyMissionDTO> data = memberMissions.map(MissionConverter::toMyMissionDTO).getContent();
+
+        return MissionResDTO.Pagination.<MissionResDTO.MyMissionDTO>builder()
+                .data(data)
+                .pageNumber(memberMissions.getNumber())
+                .pageSize(memberMissions.getSize())
+                .build();
     }
 
     public Page<MissionResDTO.HomeMissionDTO> getAvailableMissionsByRegion(String regionName, Long memberId, Integer page) {

@@ -4,6 +4,8 @@ import com.example.toy.domain.mission.dto.MissionResDTO;
 import com.example.toy.domain.mission.entity.Mission;
 import com.example.toy.domain.mission.entity.mapping.MemberMission;
 
+import java.util.List;
+
 public class MissionConverter {
 
     public static MissionResDTO.MyMissionDTO toMyMissionDTO(MemberMission memberMission) {
@@ -13,6 +15,18 @@ public class MissionConverter {
                 .missionSpec(memberMission.getMission().getMissionSpec())
                 .status(memberMission.getStatus().name())
                 .createdAt(memberMission.getCreatedAt())
+                .build();
+    }
+
+    public static <T> MissionResDTO.Pagination<T> toPagination(
+            List<T> data,
+            Integer pageNumber,
+            Integer pageSize
+    ){
+        return MissionResDTO.Pagination.<T>builder()
+                .data(data)
+                .pageNumber(pageNumber)
+                .pageSize(pageSize)
                 .build();
     }
 

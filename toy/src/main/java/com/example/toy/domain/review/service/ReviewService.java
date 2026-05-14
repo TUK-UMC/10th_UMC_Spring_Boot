@@ -8,11 +8,12 @@ import com.example.toy.domain.mission.entity.Store;
 import com.example.toy.domain.mission.repository.StoreRepository;
 import com.example.toy.domain.review.converter.ReviewConverter;
 import com.example.toy.domain.review.dto.ReviewReqDTO;
+import com.example.toy.domain.review.dto.ReviewResDTO;
 import com.example.toy.domain.review.entity.Review;
 import com.example.toy.domain.review.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,9 +25,20 @@ public class ReviewService {
     private final MemberRepository memberRepository;
     private final StoreRepository storeRepository;
 
-    public Page<Review> getReviewList(Long memberId, Integer page) {
-        // Pageable은 0부터 시작하므로 page-1 처리
-        return reviewRepository.findAllByMemberId(memberId, PageRequest.of(page - 1, 10));
+    public ReviewResDTO.Pagination<ReviewResDTO.GetReviewDTO> getReviewList(Long memberId, Integer pageSize, String cursor) {
+        PageRequest pageRequest = PageRequest.of(0, pageSize);
+        Slice<Review> reviewSlice;
+
+        if (cursor.equals("-1")) {
+            // 첫 번째 조회
+            reviewSlice = reviewRepository.findReviewsByMemberIdOrderByIdDesc(memberId, pageRequest);
+        } else {
+            // 커서 기반 조회
+            Long idCursor = Long.parseLong(cursor.split(":")[1]);
+            reviewSlice = reviewRepository.findReviewsByMemberIdAndIdLessThanOrderByIdDesc(memberId, idCursor, pageRequest);
+        }
+
+        return ReviewConverter.toPagination(reviewSlice);
     }
 
     @Transactional

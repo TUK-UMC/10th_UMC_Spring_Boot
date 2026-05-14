@@ -23,11 +23,13 @@ public class MissionController {
     }
 
     @GetMapping("/members/{memberId}")
-    public ApiResponse<Page<MissionResDTO.MyMissionDTO>> getMyMissions(@PathVariable Long memberId,
+    public ApiResponse<MissionResDTO.Pagination<MissionResDTO.MyMissionDTO>> getMyMissions(@PathVariable Long memberId,
                                                           @RequestParam String status,
-                                                          @RequestParam Integer page) {
+                                                          @RequestParam Integer pageSize,
+                                                          @RequestParam Integer pageNumber,
+                                                          @RequestParam(required = false) String sort ) {
         BaseSuccessCode code = GeneralSuccessCode.OK;
-        return ApiResponse.onSuccess(code, missionService.getMyMissionList(memberId, status, page));
+        return ApiResponse.onSuccess(code, missionService.getMyMissionList(memberId, status, pageSize, pageNumber, sort));
     }
 
     @GetMapping("/regions/{regionName}/available")
