@@ -1,0 +1,2101 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+================================================================
+File Summary
+================================================================
+
+Purpose:
+--------
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+
+File Format:
+------------
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  a. A separator line (================)
+  b. The file path (File: path/to/file)
+  c. Another separator line
+  d. The full contents of the file
+  e. A blank line
+
+Usage Guidelines:
+-----------------
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+
+Notes:
+------
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+
+
+================================================================
+Directory Structure
+================================================================
+.gitattributes
+.gitignore
+build.gradle
+gradle/wrapper/gradle-wrapper.jar
+gradle/wrapper/gradle-wrapper.properties
+gradlew
+gradlew.bat
+settings.gradle
+src/main/java/com/example/umc10th_proj/domain/member/controller/MemberController.java
+src/main/java/com/example/umc10th_proj/domain/member/converter/MemberConverter.java
+src/main/java/com/example/umc10th_proj/domain/member/dto/MemberReqDTO.java
+src/main/java/com/example/umc10th_proj/domain/member/dto/MemberResDTO.java
+src/main/java/com/example/umc10th_proj/domain/member/entity/Food.java
+src/main/java/com/example/umc10th_proj/domain/member/entity/mapping/MemberFood.java
+src/main/java/com/example/umc10th_proj/domain/member/entity/mapping/MemberTerm.java
+src/main/java/com/example/umc10th_proj/domain/member/entity/Member.java
+src/main/java/com/example/umc10th_proj/domain/member/entity/Term.java
+src/main/java/com/example/umc10th_proj/domain/member/enums/FoodName.java
+src/main/java/com/example/umc10th_proj/domain/member/enums/Gender.java
+src/main/java/com/example/umc10th_proj/domain/member/enums/SocailType.java
+src/main/java/com/example/umc10th_proj/domain/member/enums/TermName.java
+src/main/java/com/example/umc10th_proj/domain/member/exception/code/MemberErrorCode.java
+src/main/java/com/example/umc10th_proj/domain/member/exception/code/MemberSuccessCode.java
+src/main/java/com/example/umc10th_proj/domain/member/exception/MemberException.java
+src/main/java/com/example/umc10th_proj/domain/member/repository/MemberRepository.java
+src/main/java/com/example/umc10th_proj/domain/member/service/MemberService.java
+src/main/java/com/example/umc10th_proj/domain/mission/controller/MissionController.java
+src/main/java/com/example/umc10th_proj/domain/mission/converter/MissionConverter.java
+src/main/java/com/example/umc10th_proj/domain/mission/dto/MissionReqDTO.java
+src/main/java/com/example/umc10th_proj/domain/mission/dto/MissionResDTO.java
+src/main/java/com/example/umc10th_proj/domain/mission/entity/Location.java
+src/main/java/com/example/umc10th_proj/domain/mission/entity/mapping/MemberMission.java
+src/main/java/com/example/umc10th_proj/domain/mission/entity/Mission.java
+src/main/java/com/example/umc10th_proj/domain/mission/entity/Store.java
+src/main/java/com/example/umc10th_proj/domain/mission/enums/Address.java
+src/main/java/com/example/umc10th_proj/domain/mission/exception/code/MissionErrorCode.java
+src/main/java/com/example/umc10th_proj/domain/mission/exception/code/MissionSuccessCode.java
+src/main/java/com/example/umc10th_proj/domain/mission/repository/MemberMissionRepository.java
+src/main/java/com/example/umc10th_proj/domain/mission/repository/MissionRepository.java
+src/main/java/com/example/umc10th_proj/domain/mission/repository/StoreRepository.java
+src/main/java/com/example/umc10th_proj/domain/mission/service/MissionService.java
+src/main/java/com/example/umc10th_proj/domain/review/controller/ReviewController.java
+src/main/java/com/example/umc10th_proj/domain/review/converter/ReviewConverter.java
+src/main/java/com/example/umc10th_proj/domain/review/dto/ReviewReqDTO.java
+src/main/java/com/example/umc10th_proj/domain/review/dto/ReviewResDTO.java
+src/main/java/com/example/umc10th_proj/domain/review/entity/Reply.java
+src/main/java/com/example/umc10th_proj/domain/review/entity/Review.java
+src/main/java/com/example/umc10th_proj/domain/review/entity/ReviewPhoto.java
+src/main/java/com/example/umc10th_proj/domain/review/exception/code/ReviewErrorCode.java
+src/main/java/com/example/umc10th_proj/domain/review/exception/code/ReviewSuccessCode.java
+src/main/java/com/example/umc10th_proj/domain/review/exception/ReviewException.java
+src/main/java/com/example/umc10th_proj/domain/review/repository/ReviewRepository.java
+src/main/java/com/example/umc10th_proj/domain/review/service/ReviewService.java
+src/main/java/com/example/umc10th_proj/global/apiPayload/ApiResponse.java
+src/main/java/com/example/umc10th_proj/global/apiPayload/code/BaseErrorCode.java
+src/main/java/com/example/umc10th_proj/global/apiPayload/code/BaseSuccessCode.java
+src/main/java/com/example/umc10th_proj/global/apiPayload/code/GeneralErrorCode.java
+src/main/java/com/example/umc10th_proj/global/apiPayload/code/GeneralSuccessCode.java
+src/main/java/com/example/umc10th_proj/global/apiPayload/exception/ProjectException.java
+src/main/java/com/example/umc10th_proj/global/apiPayload/handler/GeneralExceptionAdvice.java
+src/main/java/com/example/umc10th_proj/global/config/SwaggerConfig.java
+src/main/java/com/example/umc10th_proj/global/entity/BaseEntity.java
+src/main/java/com/example/umc10th_proj/Umc10thProjApplication.java
+src/test/java/com/example/umc10th_proj/Umc10thProjApplicationTests.java
+
+================================================================
+Files
+================================================================
+
+================
+File: .gitattributes
+================
+/gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary
+
+================
+File: .gitignore
+================
+HELP.md
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### 민감정보 ###
+.env
+application.yml
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+================
+File: build.gradle
+================
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '4.0.5'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'umc10th_proj'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(24)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'
+    testCompileOnly 'org.projectlombok:lombok'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // Swagger
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.1'
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-api:3.0.1'
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+================
+File: gradle/wrapper/gradle-wrapper.properties
+================
+distributionBase=GRADLE_USER_HOME
+distributionPath=wrapper/dists
+distributionUrl=https\://services.gradle.org/distributions/gradle-9.4.1-bin.zip
+networkTimeout=10000
+validateDistributionUrl=true
+zipStoreBase=GRADLE_USER_HOME
+zipStorePath=wrapper/dists
+
+================
+File: gradlew
+================
+#!/bin/sh
+
+#
+# Copyright © 2015 the original authors.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      https://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+##############################################################################
+#
+#   Gradle start up script for POSIX generated by Gradle.
+#
+#   Important for running:
+#
+#   (1) You need a POSIX-compliant shell to run this script. If your /bin/sh is
+#       noncompliant, but you have some other compliant shell such as ksh or
+#       bash, then to run this script, type that shell name before the whole
+#       command line, like:
+#
+#           ksh Gradle
+#
+#       Busybox and similar reduced shells will NOT work, because this script
+#       requires all of these POSIX shell features:
+#         * functions;
+#         * expansions «$var», «${var}», «${var:-default}», «${var+SET}»,
+#           «${var#prefix}», «${var%suffix}», and «$( cmd )»;
+#         * compound commands having a testable exit status, especially «case»;
+#         * various built-in commands including «command», «set», and «ulimit».
+#
+#   Important for patching:
+#
+#   (2) This script targets any POSIX shell, so it avoids extensions provided
+#       by Bash, Ksh, etc; in particular arrays are avoided.
+#
+#       The "traditional" practice of packing multiple parameters into a
+#       space-separated string is a well documented source of bugs and security
+#       problems, so this is (mostly) avoided, by progressively accumulating
+#       options in "$@", and eventually passing that to Java.
+#
+#       Where the inherited environment variables (DEFAULT_JVM_OPTS, JAVA_OPTS,
+#       and GRADLE_OPTS) rely on word-splitting, this is performed explicitly;
+#       see the in-line comments for details.
+#
+#       There are tweaks for specific operating systems such as AIX, CygWin,
+#       Darwin, MinGW, and NonStop.
+#
+#   (3) This script is generated from the Groovy template
+#       https://github.com/gradle/gradle/blob/2d6327017519d23b96af35865dc997fcb544fb40/platforms/jvm/plugins-application/src/main/resources/org/gradle/api/internal/plugins/unixStartScript.txt
+#       within the Gradle project.
+#
+#       You can find Gradle at https://github.com/gradle/gradle/.
+#
+##############################################################################
+
+# Attempt to set APP_HOME
+
+# Resolve links: $0 may be a link
+app_path=$0
+
+# Need this for daisy-chained symlinks.
+while
+    APP_HOME=${app_path%"${app_path##*/}"}  # leaves a trailing /; empty if no leading path
+    [ -h "$app_path" ]
+do
+    ls=$( ls -ld "$app_path" )
+    link=${ls#*' -> '}
+    case $link in             #(
+      /*)   app_path=$link ;; #(
+      *)    app_path=$APP_HOME$link ;;
+    esac
+done
+
+# This is normally unused
+# shellcheck disable=SC2034
+APP_BASE_NAME=${0##*/}
+# Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
+APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s\n' "$PWD" ) || exit
+
+# Use the maximum available, or set MAX_FD != -1 to use that value.
+MAX_FD=maximum
+
+warn () {
+    echo "$*"
+} >&2
+
+die () {
+    echo
+    echo "$*"
+    echo
+    exit 1
+} >&2
+
+# OS specific support (must be 'true' or 'false').
+cygwin=false
+msys=false
+darwin=false
+nonstop=false
+case "$( uname )" in                #(
+  CYGWIN* )         cygwin=true  ;; #(
+  Darwin* )         darwin=true  ;; #(
+  MSYS* | MINGW* )  msys=true    ;; #(
+  NONSTOP* )        nonstop=true ;;
+esac
+
+
+
+# Determine the Java command to use to start the JVM.
+if [ -n "$JAVA_HOME" ] ; then
+    if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
+        # IBM's JDK on AIX uses strange locations for the executables
+        JAVACMD=$JAVA_HOME/jre/sh/java
+    else
+        JAVACMD=$JAVA_HOME/bin/java
+    fi
+    if [ ! -x "$JAVACMD" ] ; then
+        die "ERROR: JAVA_HOME is set to an invalid directory: $JAVA_HOME
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+else
+    JAVACMD=java
+    if ! command -v java >/dev/null 2>&1
+    then
+        die "ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH.
+
+Please set the JAVA_HOME variable in your environment to match the
+location of your Java installation."
+    fi
+fi
+
+# Increase the maximum file descriptors if we can.
+if ! "$cygwin" && ! "$darwin" && ! "$nonstop" ; then
+    case $MAX_FD in #(
+      max*)
+        # In POSIX sh, ulimit -H is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        MAX_FD=$( ulimit -H -n ) ||
+            warn "Could not query maximum file descriptor limit"
+    esac
+    case $MAX_FD in  #(
+      '' | soft) :;; #(
+      *)
+        # In POSIX sh, ulimit -n is undefined. That's why the result is checked to see if it worked.
+        # shellcheck disable=SC2039,SC3045
+        ulimit -n "$MAX_FD" ||
+            warn "Could not set maximum file descriptor limit to $MAX_FD"
+    esac
+fi
+
+# Collect all arguments for the java command, stacking in reverse order:
+#   * args from the command line
+#   * the main class name
+#   * -classpath
+#   * -D...appname settings
+#   * --module-path (only if needed)
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and GRADLE_OPTS environment variables.
+
+# For Cygwin or MSYS, switch paths to Windows format before running java
+if "$cygwin" || "$msys" ; then
+    APP_HOME=$( cygpath --path --mixed "$APP_HOME" )
+
+    JAVACMD=$( cygpath --unix "$JAVACMD" )
+
+    # Now convert the arguments - kludge to limit ourselves to /bin/sh
+    for arg do
+        if
+            case $arg in                                #(
+              -*)   false ;;                            # don't mess with options #(
+              /?*)  t=${arg#/} t=/${t%%/*}              # looks like a POSIX filepath
+                    [ -e "$t" ] ;;                      #(
+              *)    false ;;
+            esac
+        then
+            arg=$( cygpath --path --ignore --mixed "$arg" )
+        fi
+        # Roll the args list around exactly as many times as the number of
+        # args, so each arg winds up back in the position where it started, but
+        # possibly modified.
+        #
+        # NB: a `for` loop captures its iteration list before it begins, so
+        # changing the positional parameters here affects neither the number of
+        # iterations, nor the values presented in `arg`.
+        shift                   # remove old arg
+        set -- "$@" "$arg"      # push replacement arg
+    done
+fi
+
+
+# Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
+
+# Collect all arguments for the java command:
+#   * DEFAULT_JVM_OPTS, JAVA_OPTS, and optsEnvironmentVar are not allowed to contain shell fragments,
+#     and any embedded shellness will be escaped.
+#   * For example: A user cannot expect ${Hostname} to be expanded, as it is an environment variable and will be
+#     treated as '${Hostname}' itself on the command line.
+
+set -- \
+        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        -jar "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" \
+        "$@"
+
+# Stop when "xargs" is not available.
+if ! command -v xargs >/dev/null 2>&1
+then
+    die "xargs is not available"
+fi
+
+# Use "xargs" to parse quoted args.
+#
+# With -n1 it outputs one arg per line, with the quotes and backslashes removed.
+#
+# In Bash we could simply go:
+#
+#   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
+#   set -- "${ARGS[@]}" "$@"
+#
+# but POSIX shell has neither arrays nor command substitution, so instead we
+# post-process each arg (as a line of input to sed) to backslash-escape any
+# character that might be a shell metacharacter, then use eval to reverse
+# that process (while maintaining the separation between arguments), and wrap
+# the whole thing up as a single "set" statement.
+#
+# This will of course break if any of these variables contains a newline or
+# an unmatched quote.
+#
+
+eval "set -- $(
+        printf '%s\n' "$DEFAULT_JVM_OPTS $JAVA_OPTS $GRADLE_OPTS" |
+        xargs -n1 |
+        sed ' s~[^-[:alnum:]+,./:=@_]~\\&~g; ' |
+        tr '\n' ' '
+    )" '"$@"'
+
+exec "$JAVACMD" "$@"
+
+================
+File: gradlew.bat
+================
+@rem
+@rem Copyright 2015 the original author or authors.
+@rem
+@rem Licensed under the Apache License, Version 2.0 (the "License");
+@rem you may not use this file except in compliance with the License.
+@rem You may obtain a copy of the License at
+@rem
+@rem      https://www.apache.org/licenses/LICENSE-2.0
+@rem
+@rem Unless required by applicable law or agreed to in writing, software
+@rem distributed under the License is distributed on an "AS IS" BASIS,
+@rem WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+@rem See the License for the specific language governing permissions and
+@rem limitations under the License.
+@rem
+@rem SPDX-License-Identifier: Apache-2.0
+@rem
+
+@if "%DEBUG%"=="" @echo off
+@rem ##########################################################################
+@rem
+@rem  Gradle startup script for Windows
+@rem
+@rem ##########################################################################
+
+@rem Set local scope for the variables with windows NT shell
+if "%OS%"=="Windows_NT" setlocal
+
+set DIRNAME=%~dp0
+if "%DIRNAME%"=="" set DIRNAME=.
+@rem This is normally unused
+set APP_BASE_NAME=%~n0
+set APP_HOME=%DIRNAME%
+
+@rem Resolve any "." and ".." in APP_HOME to make it shorter.
+for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
+
+@rem Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
+set DEFAULT_JVM_OPTS="-Xmx64m" "-Xms64m"
+
+@rem Find java.exe
+if defined JAVA_HOME goto findJavaFromJavaHome
+
+set JAVA_EXE=java.exe
+%JAVA_EXE% -version >NUL 2>&1
+if %ERRORLEVEL% equ 0 goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is not set and no 'java' command could be found in your PATH. 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:findJavaFromJavaHome
+set JAVA_HOME=%JAVA_HOME:"=%
+set JAVA_EXE=%JAVA_HOME%/bin/java.exe
+
+if exist "%JAVA_EXE%" goto execute
+
+echo. 1>&2
+echo ERROR: JAVA_HOME is set to an invalid directory: %JAVA_HOME% 1>&2
+echo. 1>&2
+echo Please set the JAVA_HOME variable in your environment to match the 1>&2
+echo location of your Java installation. 1>&2
+
+goto fail
+
+:execute
+@rem Setup the command line
+
+
+
+@rem Execute Gradle
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %GRADLE_OPTS% "-Dorg.gradle.appname=%APP_BASE_NAME%" -jar "%APP_HOME%\gradle\wrapper\gradle-wrapper.jar" %*
+
+:end
+@rem End local scope for the variables with windows NT shell
+if %ERRORLEVEL% equ 0 goto mainEnd
+
+:fail
+rem Set variable GRADLE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem the _cmd.exe /c_ return code!
+set EXIT_CODE=%ERRORLEVEL%
+if %EXIT_CODE% equ 0 set EXIT_CODE=1
+if not ""=="%GRADLE_EXIT_CONSOLE%" exit %EXIT_CODE%
+exit /b %EXIT_CODE%
+
+:mainEnd
+if "%OS%"=="Windows_NT" endlocal
+
+:omega
+
+================
+File: settings.gradle
+================
+rootProject.name = 'umc10th_proj'
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/controller/MemberController.java
+================
+package com.example.umc10th_proj.domain.member.controller;
+
+import com.example.umc10th_proj.domain.member.dto.MemberReqDTO;
+import com.example.umc10th_proj.domain.member.dto.MemberResDTO;
+import com.example.umc10th_proj.domain.member.service.MemberService;
+import com.example.umc10th_proj.domain.mission.converter.MissionConverter;
+import com.example.umc10th_proj.domain.mission.dto.MissionResDTO;
+import com.example.umc10th_proj.domain.mission.entity.Mission;
+import com.example.umc10th_proj.domain.mission.entity.mapping.MemberMission;
+import com.example.umc10th_proj.domain.mission.enums.Address;
+import com.example.umc10th_proj.domain.mission.service.MissionService;
+import com.example.umc10th_proj.global.apiPayload.ApiResponse;
+import com.example.umc10th_proj.global.apiPayload.code.GeneralSuccessCode;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/members")
+public class MemberController {
+
+    private final MemberService memberService;
+    private final MissionService missionService;
+
+    // 1. 회원 가입
+    @PostMapping
+    public ApiResponse<String> join(@RequestBody MemberReqDTO.JoinDto request) {
+        return ApiResponse.onSuccess(GeneralSuccessCode.OK, "회원가입 성공");
+    }
+
+    // 2. 마이페이지 화면
+    @GetMapping("/me")
+    public ApiResponse<MemberResDTO.GetInfo> getMyPage() {
+        // 임시로 id=1L, 실제로는 JWT에서 추출
+        MemberResDTO.GetInfo result = memberService.getInfo(
+                MemberReqDTO.GetInfo.builder().id(1L).build()
+        );
+        return ApiResponse.onSuccess(GeneralSuccessCode.OK, result);
+    }
+
+    // 3. 홈화면 — 현재 지역의 도전 가능한 미션 목록 (페이징)
+    @GetMapping("/me/home-summary")
+    public ApiResponse<MissionResDTO.HomeMissionListResult> getHomeSummary(
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam Address address
+    ) {
+        Page<Mission> missions = missionService.getHomeMissions(address, page);
+        return ApiResponse.onSuccess(
+                GeneralSuccessCode.OK,
+                MissionConverter.toHomeMissionListResult(missions)
+        );
+    }
+
+    // 4. 내 미션 목록 (진행중 + 완료, 페이징)
+    @GetMapping("/me/missions")
+    public ApiResponse<MissionResDTO.MyMissionListResult> getMyMissions(
+            @RequestParam(defaultValue = "0") Integer page
+    ) {
+        // 임시로 memberId=1L, 실제로는 JWT에서 추출
+        Page<MemberMission> missions = missionService.getMyMissions(1L, page);
+        return ApiResponse.onSuccess(
+                GeneralSuccessCode.OK,
+                MissionConverter.toMyMissionListResult(missions)
+        );
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/converter/MemberConverter.java
+================
+package com.example.umc10th_proj.domain.member.converter;
+
+import com.example.umc10th_proj.domain.member.dto.MemberResDTO;
+import com.example.umc10th_proj.domain.member.entity.Member;
+
+ public class MemberConverter {
+    // 마이페이지
+    public static MemberResDTO.GetInfo toGetInfo(
+            Member member
+    ){
+        return MemberResDTO.GetInfo.builder()
+                .email(member.getEmail())
+                .name(member.getName())
+                .point(member.getPoint())
+                .phoneNumber(member.getPhoneNumber())
+                .profileUrl(member.getProfileUrl())
+                .build();
+    }
+}
+
+//public class MemberConverter{
+//
+//    public static MemberResDTO.RequestBody toRequestBody(
+//            String stringTest,
+//            Long longTest
+//    ){
+//        return MemberResDTO.RequestBody.builder()
+//                .stringTest(stringTest)
+//                .longTest(longTest)
+//                .build();
+//    }
+//}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/dto/MemberReqDTO.java
+================
+package com.example.umc10th_proj.domain.member.dto;
+
+import lombok.Builder;
+import lombok.Getter;
+import java.time.LocalDate;
+
+public class MemberReqDTO {
+
+    // 기존에 있던 GetInfo 레코드
+    @Builder
+    public record GetInfo(
+            Long id
+    ){}
+
+    // 새로 추가된 회원가입용 DTO
+    @Getter
+    public static class JoinDto {
+        private String email;
+        private String name;
+        private String gender;
+        private LocalDate birthday;
+        private String phoneNumber;
+        private String address;
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/dto/MemberResDTO.java
+================
+package com.example.umc10th_proj.domain.member.dto;
+
+import lombok.Builder;
+
+ public class MemberResDTO {
+
+    @Builder
+    public record GetInfo(
+            String name,
+            String profileUrl,
+            String email,
+            String phoneNumber,
+            Integer point
+    ){}
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/entity/Food.java
+================
+package com.example.umc10th_proj.domain.member.entity;
+
+import com.example.umc10th_proj.domain.member.enums.FoodName;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "food")
+
+public class Food {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="name")
+    @Enumerated(EnumType.STRING)
+    private FoodName name;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/entity/mapping/MemberFood.java
+================
+package com.example.umc10th_proj.domain.member.entity.mapping;
+
+import com.example.umc10th_proj.domain.member.entity.Food;
+import com.example.umc10th_proj.domain.member.entity.Member;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "member_food")
+public class MemberFood {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "food_id")
+    private Food food;
+
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/entity/mapping/MemberTerm.java
+================
+package com.example.umc10th_proj.domain.member.entity.mapping;
+
+import com.example.umc10th_proj.domain.member.entity.Term;
+import com.example.umc10th_proj.domain.member.entity.Member;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "member_term")
+public class MemberTerm {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "term_id")
+    private Term term;
+
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/entity/Member.java
+================
+package com.example.umc10th_proj.domain.member.entity;
+
+import com.example.umc10th_proj.domain.member.entity.mapping.MemberFood;
+import com.example.umc10th_proj.domain.member.entity.mapping.MemberTerm;
+import com.example.umc10th_proj.domain.member.enums.Gender;
+import com.example.umc10th_proj.domain.member.enums.SocialType;
+import com.example.umc10th_proj.domain.mission.enums.Address;
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "member")
+public class Member extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private Long id;
+
+    @Column(name = "name", nullable = false, length = 5)
+    private String name;
+
+    @Column(name = "gender", nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    private Gender gender = Gender.NONE;
+
+    @Column(name = "birth", nullable = false)
+    private LocalDate birth;
+
+    @Column(name = "address", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Address address;
+
+    @Column(name = "detail_address",   nullable = false, length = 255)
+    private String detailAddress;
+
+    @Column(name = "social_uid",    nullable = false, length = 255)
+    private String socialUid;
+
+    @Column(name = "social_type", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private SocailType socialType;
+
+    @Column(name = "point", nullable = false)
+    private Integer point;
+
+    @Column(name = "email", nullable = false, length = 50)
+    private String email;
+
+    @Column(name = "phone_number", length = 11)
+    private String phoneNumber;
+
+    @Column(name = "profile_url", nullable = false, columnDefinition = "TEXT")
+    private String profileUrl;
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<MemberFood> memberFoodList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<MemberTerm> memberTermList = new ArrayList<>();
+
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/entity/Term.java
+================
+package com.example.umc10th_proj.domain.member.entity;
+
+import com.example.umc10th_proj.domain.member.enums.TermName;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "term")
+
+public class Term {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name="name")
+    @Enumerated(EnumType.STRING)
+    private TermName name;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/enums/FoodName.java
+================
+package com.example.umc10th_proj.domain.member.enums;
+
+public enum FoodName {
+    CHINESE, JAPANESE, KOREAN, WESTERN
+
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/enums/Gender.java
+================
+package com.example.umc10th_proj.domain.member.enums;
+
+public enum Gender {
+    MALE, FEMALE, NONE
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/enums/SocailType.java
+================
+package com.example.umc10th_proj.domain.member.enums;
+
+public enum SocailType {
+    APPLE, GOOGLE, KAKAO, NAVER
+
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/enums/TermName.java
+================
+package com.example.umc10th_proj.domain.member.enums;
+
+public enum TermName {
+    AGE, SERVICE, PRIVACY, LOCATION, MARKETING
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/exception/code/MemberErrorCode.java
+================
+package com.example.umc10th_proj.domain.member.exception.code;
+
+import com.example.umc10th_proj.global.apiPayload.code.BaseErrorCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+
+@Getter
+@RequiredArgsConstructor
+public enum MemberErrorCode implements BaseErrorCode {
+
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND, "MEMBER404_1", "해당 사용자를 찾을 수 없습니다."),
+    ;
+
+    private final HttpStatus status;
+    private final String code;
+    private final String message;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/exception/code/MemberSuccessCode.java
+================
+package com.example.umc10th_proj.domain.member.exception.code;
+
+import org.springframework.http.HttpStatus;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import com.example.umc10th_proj.global.apiPayload.code.BaseSuccessCode;
+
+@Getter
+@RequiredArgsConstructor
+
+public enum MemberSuccessCode implements BaseSuccessCode {
+
+    OK(HttpStatus.OK, "MEMBER200_1", "성공적으로 유저를 조회했습니다."),
+    ;
+
+    private final HttpStatus status;
+    private final String code;
+    private final String message;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/exception/MemberException.java
+================
+package com.example.umc10th_proj.domain.member.exception;
+
+import com.example.umc10th_proj.global.apiPayload.code.BaseErrorCode;
+import com.example.umc10th_proj.global.apiPayload.exception.ProjectException;
+
+public class MemberException extends ProjectException {
+    public MemberException(BaseErrorCode errorCode) {
+        super(errorCode);
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/repository/MemberRepository.java
+================
+package com.example.umc10th_proj.domain.member.repository;
+
+import com.example.umc10th_proj.domain.member.entity.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface MemberRepository extends JpaRepository<Member,Long> {
+    Optional<Member> findByNameAndDeletedAtIsNull(String name);
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/member/service/MemberService.java
+================
+package com.example.umc10th_proj.domain.member.service;
+
+import com.example.umc10th_proj.domain.member.dto.MemberReqDTO;
+import com.example.umc10th_proj.domain.member.dto.MemberResDTO;
+import com.example.umc10th_proj.domain.member.entity.Member;
+import com.example.umc10th_proj.domain.member.exception.MemberException;
+import com.example.umc10th_proj.domain.member.exception.code.MemberErrorCode;
+import com.example.umc10th_proj.domain.member.repository.MemberRepository;
+import com.example.umc10th_proj.domain.member.converter.MemberConverter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+public class MemberService {
+    private final MemberRepository memberRepository;
+
+    public MemberResDTO.GetInfo getInfo(MemberReqDTO.GetInfo dto) {
+        Member member = memberRepository.findByNameAndDeletedAtIsNull("마크")
+                .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_FOUND));
+        return MemberConverter.toGetInfo(member);
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/controller/MissionController.java
+================
+package com.example.umc10th_proj.domain.mission.controller;
+
+import com.example.umc10th_proj.domain.mission.dto.MissionReqDTO;
+import com.example.umc10th_proj.global.apiPayload.ApiResponse;
+import com.example.umc10th_proj.global.apiPayload.code.GeneralSuccessCode;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1")
+public class MissionController {
+
+    // 미션 성공 누르기
+    @PatchMapping("/member-missions/{id}")
+    public ApiResponse<String> completeMission(
+            @PathVariable(name = "id") Long id,
+            @RequestBody MissionReqDTO.CompleteMissionDto request
+    ) {
+        // TODO: missionService.completeMission(id, request) 호출 로직 작성
+        return ApiResponse.onSuccess(GeneralSuccessCode.OK, "미션 성공 처리 완료");
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/converter/MissionConverter.java
+================
+package com.example.umc10th_proj.domain.mission.converter;
+
+import com.example.umc10th_proj.domain.mission.dto.MissionResDTO;
+import com.example.umc10th_proj.domain.mission.entity.Mission;
+import com.example.umc10th_proj.domain.mission.entity.mapping.MemberMission;
+import org.springframework.data.domain.Page;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class MissionConverter {
+
+    public static MissionResDTO.HomeMissionInfo toHomeMissionInfo(Mission m) {
+        return MissionResDTO.HomeMissionInfo.builder()
+                .missionId(m.getId())
+                .storeName(m.getStore().getName())
+                .point(m.getPoint())
+                .conditional(m.getConditional())
+                .deadline(m.getDeadline())
+                .build();
+    }
+
+    public static MissionResDTO.HomeMissionListResult toHomeMissionListResult(Page<Mission> page) {
+        List<MissionResDTO.HomeMissionInfo> list = page.stream()
+                .map(MissionConverter::toHomeMissionInfo)
+                .collect(Collectors.toList());
+        return MissionResDTO.HomeMissionListResult.builder()
+                .missionList(list)
+                .listSize(list.size())
+                .totalPage(page.getTotalPages())
+                .totalElements(page.getTotalElements())
+                .isFirst(page.isFirst())
+                .isLast(page.isLast())
+                .build();
+    }
+
+    public static MissionResDTO.MyMissionInfo toMyMissionInfo(MemberMission mm) {
+        return MissionResDTO.MyMissionInfo.builder()
+                .memberMissionId(mm.getId())
+                .storeName(mm.getMission().getStore().getName())
+                .point(mm.getMission().getPoint())
+                .conditional(mm.getMission().getConditional())
+                .isComplete(mm.getIsComplete())
+                .build();
+    }
+
+    public static MissionResDTO.MyMissionListResult toMyMissionListResult(Page<MemberMission> page) {
+        List<MissionResDTO.MyMissionInfo> list = page.stream()
+                .map(MissionConverter::toMyMissionInfo)
+                .collect(Collectors.toList());
+        return MissionResDTO.MyMissionListResult.builder()
+                .missionList(list)
+                .listSize(list.size())
+                .totalPage(page.getTotalPages())
+                .totalElements(page.getTotalElements())
+                .isFirst(page.isFirst())
+                .isLast(page.isLast())
+                .build();
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/dto/MissionReqDTO.java
+================
+package com.example.umc10th_proj.domain.mission.dto;
+
+import lombok.Getter;
+
+public class MissionReqDTO {
+
+    @Getter
+    public static class CompleteMissionDto {
+        private String managerNumber;
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/dto/MissionResDTO.java
+================
+package com.example.umc10th_proj.domain.mission.dto;
+
+import lombok.Builder;
+
+import java.time.LocalDate;
+import java.util.List;
+
+public class MissionResDTO {
+
+    // 홈화면 미션 목록
+    @Builder
+    public record HomeMissionListResult(
+            List<HomeMissionInfo> missionList,
+            Integer listSize,
+            Integer totalPage,
+            Long totalElements,
+            Boolean isFirst,
+            Boolean isLast
+    ) {}
+
+    @Builder
+    public record HomeMissionInfo(
+            Long missionId,
+            String storeName,
+            Integer point,
+            String conditional,
+            LocalDate deadline
+    ) {}
+
+    // 내 미션 목록 (진행중/완료)
+    @Builder
+    public record MyMissionListResult(
+            List<MyMissionInfo> missionList,
+            Integer listSize,
+            Integer totalPage,
+            Long totalElements,
+            Boolean isFirst,
+            Boolean isLast
+    ) {}
+
+    @Builder
+    public record MyMissionInfo(
+            Long memberMissionId,
+            String storeName,
+            Integer point,
+            String conditional,
+            Boolean isComplete
+    ) {}
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/entity/Location.java
+================
+package com.example.umc10th_proj.domain.mission.entity;
+
+import com.example.umc10th_proj.domain.mission.enums.Address;
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "location")
+public class Location extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Address name;
+
+    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Store> storeList = new ArrayList<>();
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/entity/mapping/MemberMission.java
+================
+package com.example.umc10th_proj.domain.mission.entity.mapping;
+
+import com.example.umc10th_proj.domain.member.entity.Member;
+import com.example.umc10th_proj.domain.mission.entity.Mission;
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "member_mission")
+public class MemberMission extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "is_complete", nullable = false)
+    @Builder.Default
+    private Boolean isComplete = false;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "mission_id")
+    private Mission mission;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
+
+    // 미션 완료 처리
+    public void complete() {
+        this.isComplete = true;
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/entity/Mission.java
+================
+package com.example.umc10th_proj.domain.mission.entity;
+
+import com.example.umc10th_proj.domain.mission.entity.mapping.MemberMission;
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "mission")
+public class Mission extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "deadline")
+    private LocalDate deadline;
+
+    @Column(name = "conditional", columnDefinition = "TEXT")
+    private String conditional;
+
+    @Column(name = "point", nullable = false)
+    private Integer point;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    @OneToMany(mappedBy = "mission", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<MemberMission> memberMissionList = new ArrayList<>();
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/entity/Store.java
+================
+package com.example.umc10th_proj.domain.mission.entity;
+
+import com.example.umc10th_proj.domain.review.entity.Review;
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "store")
+public class Store extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", nullable = false, length = 255)
+    private String name;
+
+    @Column(name = "manager_number")
+    private String managerNumber;
+
+    @Column(name = "detail_address", length = 255)
+    private String detailAddress;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "location_id")
+    private Location location;
+
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Mission> missionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<Review> reviewList = new ArrayList<>();
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/enums/Address.java
+================
+package com.example.umc10th_proj.domain.mission.enums;
+
+public enum Address {
+    강남구, 종로구, 동작구, 마포구
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/exception/code/MissionErrorCode.java
+================
+package com.example.umc10th_proj.domain.mission.exception.code;
+
+public enum MissionErrorCode {
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/exception/code/MissionSuccessCode.java
+================
+package com.example.umc10th_proj.domain.mission.exception.code;
+
+public enum MissionSuccessCode {
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/repository/MemberMissionRepository.java
+================
+package com.example.umc10th_proj.domain.mission.repository;
+
+import com.example.umc10th_proj.domain.mission.entity.mapping.MemberMission;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+public interface MemberMissionRepository extends JpaRepository<MemberMission, Long> {
+
+    @Query("SELECT mm FROM MemberMission mm " +
+            "WHERE mm.member.id = :memberId " +
+            "ORDER BY mm.createdAt DESC")
+    Page<MemberMission> findByMemberId(
+            @Param("memberId") Long memberId,
+            Pageable pageable
+    );
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/repository/MissionRepository.java
+================
+package com.example.umc10th_proj.domain.mission.repository;
+
+import com.example.umc10th_proj.domain.mission.entity.Mission;
+import com.example.umc10th_proj.domain.mission.entity.mapping.MemberMission;
+import com.example.umc10th_proj.domain.mission.enums.Address;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+public interface MissionRepository extends JpaRepository<Mission, Long> {
+
+    // 홈화면: 특정 지역에서 도전 가능한 미션 목록 (마감일 지나지 않은 것)
+    @Query("SELECT m FROM Mission m " +
+            "WHERE m.store.location.name = :address " +
+            "AND (m.deadline IS NULL OR m.deadline >= CURRENT_DATE) " +
+            "ORDER BY m.createdAt DESC")
+    Page<Mission> findAvailableMissionsByAddress(
+            @Param("address") Address address,
+            Pageable pageable
+    );
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/repository/StoreRepository.java
+================
+package com.example.umc10th_proj.domain.mission.repository;
+
+import com.example.umc10th_proj.domain.mission.entity.Store;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface StoreRepository extends JpaRepository<Store, Long> {
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/mission/service/MissionService.java
+================
+package com.example.umc10th_proj.domain.mission.service;
+
+import com.example.umc10th_proj.domain.mission.entity.Mission;
+import com.example.umc10th_proj.domain.mission.entity.mapping.MemberMission;
+import com.example.umc10th_proj.domain.mission.enums.Address;
+import com.example.umc10th_proj.domain.mission.repository.MemberMissionRepository;
+import com.example.umc10th_proj.domain.mission.repository.MissionRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+@RequiredArgsConstructor
+@Transactional(readOnly = true)
+public class MissionService {
+
+    private final MissionRepository missionRepository;
+    private final MemberMissionRepository memberMissionRepository;
+
+    // 홈화면: 지역별 도전 가능한 미션 목록 (페이징)
+    public Page<Mission> getHomeMissions(Address address, Integer page) {
+        return missionRepository.findAvailableMissionsByAddress(
+                address, PageRequest.of(page, 10)
+        );
+    }
+
+    // 내 미션 목록 조회 (진행중 + 완료, 페이징)
+    public Page<MemberMission> getMyMissions(Long memberId, Integer page) {
+        return memberMissionRepository.findByMemberId(
+                memberId, PageRequest.of(page, 10)
+        );
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/controller/ReviewController.java
+================
+package com.example.umc10th_proj.domain.review.controller;
+
+import com.example.umc10th_proj.domain.review.converter.ReviewConverter;
+import com.example.umc10th_proj.domain.review.dto.ReviewReqDTO;
+import com.example.umc10th_proj.domain.review.dto.ReviewResDTO;
+import com.example.umc10th_proj.domain.review.entity.Review;
+import com.example.umc10th_proj.domain.review.service.ReviewService;
+import com.example.umc10th_proj.global.apiPayload.ApiResponse;
+import com.example.umc10th_proj.global.apiPayload.code.GeneralSuccessCode;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/v1/stores")
+public class ReviewController {
+
+    private final ReviewService reviewService;
+
+    // 리뷰 작성 (사진 배제)
+    @PostMapping(value = "/{storeId}/reviews", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ApiResponse<ReviewResDTO.CreateReviewResult> createReview(
+            @PathVariable(name = "storeId") Long storeId,
+            @ModelAttribute ReviewReqDTO.CreateReview request
+    ) {
+        // 임시로 memberId=1L, 실제로는 JWT에서 추출
+        Review review = reviewService.createReview(storeId, 1L, request);
+        return ApiResponse.onSuccess(
+                GeneralSuccessCode.OK,
+                ReviewConverter.toCreateReviewResult(review)
+        );
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/converter/ReviewConverter.java
+================
+package com.example.umc10th_proj.domain.review.converter;
+
+import com.example.umc10th_proj.domain.review.dto.ReviewResDTO;
+import com.example.umc10th_proj.domain.review.entity.Review;
+
+public class ReviewConverter {
+
+    public static ReviewResDTO.CreateReviewResult toCreateReviewResult(Review review) {
+        return ReviewResDTO.CreateReviewResult.builder()
+                .reviewId(review.getId())
+                .createdAt(review.getCreatedAt())
+                .build();
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/dto/ReviewReqDTO.java
+================
+package com.example.umc10th_proj.domain.review.dto;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
+import java.util.List;
+
+public class ReviewReqDTO {
+
+    @Getter
+    @Setter
+    public static class CreateReview {
+        private Double star;
+        private String content;
+        private List<MultipartFile> photos; // 사진 파일 명세 그대로 포함
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/dto/ReviewResDTO.java
+================
+package com.example.umc10th_proj.domain.review.dto;
+
+import lombok.Builder;
+import java.time.LocalDateTime;
+
+public class ReviewResDTO {
+
+    @Builder
+    public record CreateReviewResult(
+            Long reviewId,
+            LocalDateTime createdAt
+    ) {}
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/entity/Reply.java
+================
+package com.example.umc10th_proj.domain.review.entity;
+
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "reply")
+public class Reply extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "content", nullable = false, columnDefinition = "TEXT")
+    private String content;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/entity/Review.java
+================
+package com.example.umc10th_proj.domain.review.entity;
+
+import com.example.umc10th_proj.domain.member.entity.Member;
+import com.example.umc10th_proj.domain.mission.entity.Store;
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "review")
+public class Review extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "content", columnDefinition = "TEXT")
+    private String content;
+
+    @Column(name = "star", nullable = false)
+    private BigDecimal star;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "store_id")
+    private Store store;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private Member member;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "reply_id")
+    private Reply reply;
+
+    @OneToMany(mappedBy = "review", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<ReviewPhoto> photoList = new ArrayList<>();
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/entity/ReviewPhoto.java
+================
+package com.example.umc10th_proj.domain.review.entity;
+
+import com.example.umc10th_proj.global.entity.BaseEntity;
+import jakarta.persistence.*;
+import lombok.*;
+
+@Entity
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "review_photo")
+public class ReviewPhoto extends BaseEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "photo_url", columnDefinition = "TEXT")
+    private String photoUrl;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "review_id")
+    private Review review;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/exception/code/ReviewErrorCode.java
+================
+package com.example.umc10th_proj.domain.review.exception.code;
+
+public enum ReviewErrorCode {
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/exception/code/ReviewSuccessCode.java
+================
+package com.example.umc10th_proj.domain.review.exception.code;
+
+public enum ReviewSuccessCode {
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/exception/ReviewException.java
+================
+package com.example.umc10th_proj.domain.review.exception;
+
+public class ReviewException extends RuntimeException {
+    public ReviewException(String message) {
+        super(message);
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/repository/ReviewRepository.java
+================
+package com.example.umc10th_proj.domain.review.repository;
+
+import com.example.umc10th_proj.domain.review.entity.Review;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ReviewRepository extends JpaRepository<Review, Long> {
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/domain/review/service/ReviewService.java
+================
+package com.example.umc10th_proj.domain.review.service;
+
+import com.example.umc10th_proj.domain.member.entity.Member;
+import com.example.umc10th_proj.domain.member.exception.MemberException;
+import com.example.umc10th_proj.domain.member.exception.code.MemberErrorCode;
+import com.example.umc10th_proj.domain.member.repository.MemberRepository;
+import com.example.umc10th_proj.domain.mission.entity.Store;
+import com.example.umc10th_proj.domain.mission.repository.StoreRepository;
+import com.example.umc10th_proj.domain.review.dto.ReviewReqDTO;
+import com.example.umc10th_proj.domain.review.entity.Review;
+import com.example.umc10th_proj.domain.review.repository.ReviewRepository;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+
+@Service
+@RequiredArgsConstructor
+public class ReviewService {
+
+    private final ReviewRepository reviewRepository;
+    private final MemberRepository memberRepository;
+    private final StoreRepository storeRepository;
+
+    // 리뷰 작성
+    @Transactional
+    public Review createReview(Long storeId, Long memberId, ReviewReqDTO.CreateReview dto) {
+        Store store = storeRepository.findById(storeId)
+                .orElseThrow(() -> new RuntimeException("가게를 찾을 수 없습니다."));
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new MemberException(MemberErrorCode.MEMBER_NOT_FOUND));
+
+        Review review = Review.builder()
+                .content(dto.getContent())
+                .star(BigDecimal.valueOf(dto.getStar()))
+                .store(store)
+                .member(member)
+                .build();
+
+        return reviewRepository.save(review);
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/apiPayload/ApiResponse.java
+================
+package com.example.umc10th_proj.global.apiPayload;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import com.example.umc10th_proj.global.apiPayload.code.BaseErrorCode;
+import com.example.umc10th_proj.global.apiPayload.code.BaseSuccessCode;
+
+@Getter
+@AllArgsConstructor
+@JsonPropertyOrder({"isSuccess", "code", "message", "result"})
+public class ApiResponse<T> {
+
+    @JsonProperty("isSuccess")
+    private final Boolean isSuccess;
+
+    @JsonProperty("code")
+    private final String code;
+
+    @JsonProperty("message")
+    private final String message;
+
+    @JsonProperty("result")
+    private T result;
+
+    // 성공한 경우 (result 포함)
+    public static <T> ApiResponse<T> onSuccess(BaseSuccessCode code, T result) {
+        return new ApiResponse<>(true, code.getCode(), code.getMessage(), result);
+    }
+
+    // 실패한 경우 (result 포함)
+    public static <T> ApiResponse<T> onFailure(BaseErrorCode code, T result) {
+        return new ApiResponse<>(false, code.getCode(), code.getMessage(), result);
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/apiPayload/code/BaseErrorCode.java
+================
+package com.example.umc10th_proj.global.apiPayload.code;
+
+import org.springframework.http.HttpStatus;
+
+public interface BaseErrorCode {
+
+    HttpStatus getStatus();
+    String getCode();
+    String getMessage();
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/apiPayload/code/BaseSuccessCode.java
+================
+package com.example.umc10th_proj.global.apiPayload.code;
+
+import org.springframework.http.HttpStatus;
+
+public interface BaseSuccessCode {
+
+    HttpStatus getStatus();
+    String getCode();
+    String getMessage();
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/apiPayload/code/GeneralErrorCode.java
+================
+package com.example.umc10th_proj.global.apiPayload.code;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+
+@Getter
+@RequiredArgsConstructor
+public enum GeneralErrorCode implements BaseErrorCode {
+
+    BAD_REQUEST(HttpStatus.BAD_REQUEST, "COMMON400_1", "잘못된 요청입니다."),
+    UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "COMMON401_1", "인증되지 않았습니다."),
+    FORBIDDEN(HttpStatus.FORBIDDEN, "COMMON403_1", "접근이 금지되었습니다."),
+    NOT_FOUND(HttpStatus.NOT_FOUND, "COMMON404_1", "해당 리소스를 찾을 수 없습니다"),
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR, "COMMON500_1", "서버 내부 에러입니다. 관리자에게 문의하세요."),
+    ;
+
+    private final HttpStatus status;
+    private final String code;
+    private final String message;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/apiPayload/code/GeneralSuccessCode.java
+================
+package com.example.umc10th_proj.global.apiPayload.code;
+
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+
+@Getter
+@RequiredArgsConstructor
+public enum GeneralSuccessCode implements BaseSuccessCode {
+
+    OK(HttpStatus.OK, "COMMON200_1", "성공적으로 요청을 처리했습니다."),
+    ;
+
+    private final HttpStatus status;
+    private final String code;
+    private final String message;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/apiPayload/exception/ProjectException.java
+================
+package com.example.umc10th_proj.global.apiPayload.exception;
+
+import lombok.Getter;
+import com.example.umc10th_proj.global.apiPayload.code.BaseErrorCode;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@RequiredArgsConstructor
+public class ProjectException extends RuntimeException{
+    private final BaseErrorCode errorCode;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/apiPayload/handler/GeneralExceptionAdvice.java
+================
+package com.example.umc10th_proj.global.apiPayload.handler;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import com.example.umc10th_proj.global.apiPayload.ApiResponse;
+import com.example.umc10th_proj.global.apiPayload.code.BaseErrorCode;
+import com.example.umc10th_proj.global.apiPayload.code.GeneralErrorCode;
+import com.example.umc10th_proj.global.apiPayload.exception.ProjectException;
+
+@RestControllerAdvice
+public class GeneralExceptionAdvice {
+
+    // 프로젝트에서 발생한 예외 처리
+    @ExceptionHandler(ProjectException.class)
+    public ResponseEntity<ApiResponse<Void>> handleMemberException(
+            ProjectException e
+    ) {
+        BaseErrorCode errorCode = e.getErrorCode();
+        return ResponseEntity.status(errorCode.getStatus())
+                .body(ApiResponse.onFailure(errorCode, null));
+    }
+
+    // 그 외의 정의되지 않은 모든 예외 처리
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiResponse<String>> handleException(
+            Exception ex
+    ) {
+
+        BaseErrorCode code = GeneralErrorCode.INTERNAL_SERVER_ERROR;
+        return ResponseEntity.status(code.getStatus())
+                .body(ApiResponse.onFailure(
+                                code,
+                                ex.getMessage()
+                        )
+                );
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/config/SwaggerConfig.java
+================
+package com.example.umc10th_proj.global.config;
+
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SwaggerConfig {
+
+    @Bean
+    public OpenAPI swagger() {
+        Info info = new Info().title("UMC10th").description("10기 Swagger").version("0.0.1");
+
+        // JWT 토큰 헤더 방식
+        String securityScheme = "JWT TOKEN";
+        SecurityRequirement securityRequirement = new SecurityRequirement().addList(securityScheme);
+
+        Components components = new Components()
+                .addSecuritySchemes(securityScheme, new SecurityScheme()
+                        .name(securityScheme)
+                        .type(SecurityScheme.Type.HTTP)
+                        .scheme("Bearer")
+                        .bearerFormat("JWT"));
+
+        return new OpenAPI()
+                .info(info)
+                .addServersItem(new Server().url("/"))
+                .addSecurityItem(securityRequirement)
+                .components(components);
+    }
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/global/entity/BaseEntity.java
+================
+package com.example.umc10th_proj.global.entity;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.MappedSuperclass;
+import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
+
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@Getter
+public abstract class BaseEntity {
+
+    @CreatedDate
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
+
+    @LastModifiedDate
+    @Column(name = "updated_at", nullable = false)
+    private LocalDateTime updatedAt;
+
+    @Column(name = "deleted_at")
+    private LocalDateTime deletedAt;
+}
+
+================
+File: src/main/java/com/example/umc10th_proj/Umc10thProjApplication.java
+================
+package com.example.umc10th_proj;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.scheduling.annotation.EnableAsync;
+
+@SpringBootApplication
+@EnableJpaAuditing
+public class Umc10thProjApplication {
+
+    public static void main(String[] args) {
+        SpringApplication.run(Umc10thProjApplication.class, args);
+    }
+
+}
+
+================
+File: src/test/java/com/example/umc10th_proj/Umc10thProjApplicationTests.java
+================
+package com.example.umc10th_proj;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+class Umc10thProjApplicationTests {
+
+    @Test
+    void contextLoads() {
+    }
+
+}
+
+
+
+
+
+================================================================
+End of Codebase
+================================================================
