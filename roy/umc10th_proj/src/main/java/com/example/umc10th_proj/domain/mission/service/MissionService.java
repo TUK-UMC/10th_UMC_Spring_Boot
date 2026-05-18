@@ -30,7 +30,7 @@ public class MissionService {
     private final MemberMissionRepository memberMissionRepository;
     private final StoreRepository storeRepository;
 
-    // 가게 미션 생성 (반환 타입 Void -> Mission으로 변경)
+    // 가게 미션 생성
     @Transactional
     public Mission createMission(Long storeId, MissionReqDTO.CreateMission dto) {
         // 가게 찾기
@@ -41,8 +41,7 @@ public class MissionService {
         Mission mission = MissionConverter.toMission(store, dto);
 
         // 미션 DB 저장
-        missionRepository.save(mission);
-        return null;
+        return missionRepository.save(mission);
     }
 
     // 가게 내 미션들 조회

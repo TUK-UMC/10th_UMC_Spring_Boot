@@ -3,7 +3,7 @@ package com.example.umc10th_proj.domain.member.entity;
 import com.example.umc10th_proj.domain.member.entity.mapping.MemberFood;
 import com.example.umc10th_proj.domain.member.entity.mapping.MemberTerm;
 import com.example.umc10th_proj.domain.member.enums.Gender;
-import com.example.umc10th_proj.domain.member.enums.SocailType;
+import com.example.umc10th_proj.domain.member.enums.SocialType;
 import com.example.umc10th_proj.domain.mission.enums.Address;
 import com.example.umc10th_proj.global.entity.BaseEntity;
 import jakarta.persistence.*;
@@ -49,12 +49,12 @@ public class Member extends BaseEntity {
     private String detailAddress;
 
     // DB 컬럼명이 social_uid (JPA 생성) — 유지
-    @Column(name = "social_uid", nullable = false, length = 255)
+    @Column(name = "social_uid", nullable = true, length = 255)
     private String socialUid;
 
-    @Column(name = "social_type", nullable = false)
+    @Column(name = "social_type", nullable = true)
     @Enumerated(EnumType.STRING)
-    private SocailType socialType;
+    private SocialType socialType;
 
     @Column(name = "point")
     @Builder.Default
@@ -62,6 +62,9 @@ public class Member extends BaseEntity {
 
     @Column(name = "email", length = 50)
     private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
 
     @Column(name = "phone_number", length = 11)
     private String phoneNumber;

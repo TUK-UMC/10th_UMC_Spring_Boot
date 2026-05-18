@@ -1,7 +1,9 @@
 package com.example.umc10th_proj.domain.member.controller;
 
+import com.example.umc10th_proj.domain.member.converter.MemberConverter;
 import com.example.umc10th_proj.domain.member.dto.MemberReqDTO;
 import com.example.umc10th_proj.domain.member.dto.MemberResDTO;
+import com.example.umc10th_proj.domain.member.entity.Member;
 import com.example.umc10th_proj.domain.member.service.MemberService;
 import com.example.umc10th_proj.domain.mission.converter.MissionConverter;
 import com.example.umc10th_proj.domain.mission.dto.MissionResDTO;
@@ -15,6 +17,7 @@ import com.example.umc10th_proj.domain.review.entity.Review;
 import com.example.umc10th_proj.domain.review.service.ReviewService;
 import com.example.umc10th_proj.global.apiPayload.ApiResponse;
 import com.example.umc10th_proj.global.apiPayload.code.GeneralSuccessCode;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Slice;
@@ -33,8 +36,12 @@ public class MemberController {
 
     // 1. 회원 가입
     @PostMapping
-    public ApiResponse<String> join(@RequestBody MemberReqDTO.JoinDto request) {
-        return ApiResponse.onSuccess(GeneralSuccessCode.OK, "회원가입 성공");
+    public ApiResponse<MemberResDTO.JoinResult> join(@RequestBody @Valid MemberReqDTO.JoinDto request) {
+        Member newMember = memberService.join(request);
+        return ApiResponse.onSuccess(
+                GeneralSuccessCode.OK,
+                MemberConverter.toJoinResult(newMember)
+        );
     }
 
     // 2. 마이페이지 화면

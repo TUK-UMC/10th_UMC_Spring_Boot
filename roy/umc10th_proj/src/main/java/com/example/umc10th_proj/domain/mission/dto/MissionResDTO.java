@@ -1,18 +1,30 @@
 package com.example.umc10th_proj.domain.mission.dto;
 
 import lombok.Builder;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class MissionResDTO {
+
+    // 미션 생성 직후 프론트로 돌려줄 데이터 규격
+    @Builder
+    public record CreateMissionResult(
+            Long missionId,
+            LocalDateTime createdAt
+    ) {}
 
     // 가게 내 미션 조회
     @Builder
     public record GetMission(
             Long missionId,
             Integer point,
-            String conditional
+            String conditional,
+            LocalDate deadline,
+            String status,
+            LocalDateTime createAt
     ) {}
 
     // 페이지네이션 틀

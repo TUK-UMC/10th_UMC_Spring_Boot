@@ -1,17 +1,17 @@
 package com.example.umc10th_proj.domain.mission.controller;
 
+import com.example.umc10th_proj.domain.mission.converter.MissionConverter;
 import com.example.umc10th_proj.domain.mission.dto.MissionReqDTO;
 import com.example.umc10th_proj.domain.mission.dto.MissionResDTO;
+import com.example.umc10th_proj.domain.mission.entity.Mission;
 import com.example.umc10th_proj.domain.mission.exception.code.MissionSuccessCode;
 import com.example.umc10th_proj.domain.mission.service.MissionService;
 import com.example.umc10th_proj.global.apiPayload.ApiResponse;
 import com.example.umc10th_proj.global.apiPayload.code.BaseSuccessCode;
 import com.example.umc10th_proj.global.apiPayload.code.GeneralSuccessCode;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,12 +22,17 @@ public class MissionController {
 
     // 1. 가게 미션 생성 (POST) - 사진과 동일하게 result: null 반환
     @PostMapping("/stores/{storeId}/missions")
-    public ApiResponse<Void> createMission(
+    public ApiResponse<MissionResDTO.CreateMissionResult> createMission(
             @PathVariable(name = "storeId") Long storeId,
-            @RequestBody MissionReqDTO.CreateMission request
+            @Valid @RequestBody MissionReqDTO.CreateMission request
     ) {
-        missionService.createMission(storeId, request);
-        return ApiResponse.onSuccess(MissionSuccessCode.CREATED, null);
+
+        Mission newMission = missionService.createMission(storeId, request);
+
+        return ApiResponse.onSuccess(
+                MissionSuccessCode.CREATED,
+                MissionConverter.toCreateMissionResult(newMission)
+        );
     }
 
     // 가게 내 미션들 조회 (오프셋 기반 페이징 - 커스텀 DTO 적용)

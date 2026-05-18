@@ -7,6 +7,7 @@ import com.example.umc10th_proj.domain.mission.entity.Store;
 import com.example.umc10th_proj.domain.mission.entity.mapping.MemberMission;
 import org.springframework.data.domain.Page;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,12 +38,27 @@ public class MissionConverter {
                 .build();
     }
 
+    // Service에서 저장된 Mission 엔티티를 받아 DTO로 변환
+    public static MissionResDTO.CreateMissionResult toCreateMissionResult(Mission mission) {
+        return MissionResDTO.CreateMissionResult.builder()
+                .missionId(mission.getId())
+                .createdAt(mission.getCreatedAt())
+                .build();
+    }
+
     // 가게 내 미션 조회 변환 로직
     public static MissionResDTO.GetMission toGetMission(Mission mission) {
+
+        // 1. 현재의 서버시간과 deadline을 비교해서 상태값 연산
+        boolean isExpired = mission.getDeadline().isBefore(LocalDate.now());
+        String currentStatus = isExpired ? "Expired" : "Activate";
+
         return MissionResDTO.GetMission.builder()
+                .missionId(mission.getId())
                 .conditional(mission.getConditional())
                 .point(mission.getPoint())
-                .missionId(mission.getId())
+                .createAt(mission.getCreatedAt())
+                .status(currentStatus)
                 .build();
     }
 

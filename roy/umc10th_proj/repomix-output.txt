@@ -838,7 +838,7 @@ package com.example.umc10th_proj.domain.member.entity;
 import com.example.umc10th_proj.domain.member.entity.mapping.MemberFood;
 import com.example.umc10th_proj.domain.member.entity.mapping.MemberTerm;
 import com.example.umc10th_proj.domain.member.enums.Gender;
-import com.example.umc10th_proj.domain.member.enums.SocailType;
+import com.example.umc10th_proj.domain.member.enums.SocialType;
 import com.example.umc10th_proj.domain.mission.enums.Address;
 import com.example.umc10th_proj.global.entity.BaseEntity;
 import jakarta.persistence.*;

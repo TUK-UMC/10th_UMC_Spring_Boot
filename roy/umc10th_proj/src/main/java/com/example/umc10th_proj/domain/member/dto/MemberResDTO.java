@@ -2,7 +2,9 @@ package com.example.umc10th_proj.domain.member.dto;
 
 import lombok.Builder;
 
- public class MemberResDTO {
+import java.time.LocalDateTime;
+
+public class MemberResDTO {
 
     @Builder
     public record GetInfo(
@@ -12,4 +14,10 @@ import lombok.Builder;
             String phoneNumber,
             Integer point
     ){}
+
+     @Builder
+     public record JoinResult(
+             Long memberId,
+             LocalDateTime createdAt
+     ){}
 }
