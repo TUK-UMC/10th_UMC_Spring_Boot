@@ -36,6 +36,10 @@ public class Member extends BaseEntity {
     @Column(name = "email", length = 100)
     private String email;
 
+    // 폼 로그인용 비밀번호 (BCrypt 해시 저장, 소셜 로그인 회원은 null 가능)
+    @Column(name = "password", length = 200)
+    private String password;
+
     @Column(name = "phone_number", length = 20)
     private String phoneNumber;
 
