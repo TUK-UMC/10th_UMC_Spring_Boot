@@ -1,7 +1,10 @@
 package com.example.toy.domain.mission.exception;
 
-public class MissionException extends RuntimeException {
-    public MissionException(String message) {
-        super(message);
+import com.example.toy.global.apiPayload.code.BaseErrorCode;
+import com.example.toy.global.apiPayload.exception.ProjectException;
+
+public class MissionException extends ProjectException {
+    public MissionException(BaseErrorCode errorCode) {
+        super(errorCode);
     }
 }

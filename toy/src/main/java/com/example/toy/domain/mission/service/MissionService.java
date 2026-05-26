@@ -5,6 +5,8 @@ import com.example.toy.domain.mission.dto.MissionResDTO;
 import com.example.toy.domain.mission.entity.Mission;
 import com.example.toy.domain.mission.entity.mapping.MemberMission;
 import com.example.toy.domain.mission.enums.MissionStatus;
+import com.example.toy.domain.mission.exception.MissionException;
+import com.example.toy.domain.mission.exception.code.MissionErrorCode;
 import com.example.toy.domain.mission.repository.MemberMissionRepository;
 import com.example.toy.domain.mission.repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +24,7 @@ import java.util.List;
 public class MissionService {
     private final MissionRepository missionRepository;
     private final MemberMissionRepository memberMissionRepository;
+    MissionStatus missionStatus;
 
     public Page<Mission> getRegionMissionList(Long regionId, Integer page) {
         return missionRepository.findAllByRegionId(regionId, PageRequest.of(page - 1, 10));
@@ -44,8 +47,11 @@ public class MissionService {
 
         PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, sortInfo);
 
-        MissionStatus missionStatus = MissionStatus.valueOf(status.toUpperCase());
-
+        try {
+            MissionStatus missionStatus = MissionStatus.valueOf(status.toUpperCase());
+        } catch (IllegalArgumentException e) {
+            throw new MissionException(MissionErrorCode.INVALID_MISSION_STATUS);
+        }
         Page<MemberMission> memberMissions = memberMissionRepository.findAllByMemberIdAndStatus(memberId, missionStatus, pageRequest);
 
         List<MissionResDTO.MyMissionDTO> data = memberMissions.map(MissionConverter::toMyMissionDTO).getContent();

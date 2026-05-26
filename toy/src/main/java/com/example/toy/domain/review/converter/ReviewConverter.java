@@ -42,8 +42,8 @@ public class ReviewConverter {
 
         String nextCursor = null;
         if (reviewSlice.hasNext()) {
-            Review last = reviewSlice.getContent().get(reviewSlice.getContent().size() - 1);
-            nextCursor = last.getId() + ":" + last.getId();
+            Review last = reviewSlice.getContent().getLast();
+            nextCursor = String.valueOf(last.getId());
         }
 
         return ReviewResDTO.Pagination.<ReviewResDTO.GetReviewDTO>builder()
