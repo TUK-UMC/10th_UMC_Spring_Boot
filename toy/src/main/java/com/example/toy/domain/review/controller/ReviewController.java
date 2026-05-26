@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class ReviewController {
     private final ReviewService reviewService;
 
+    //pagenation 응답
     @GetMapping("/members/{memberId}")
     public ApiResponse<ReviewResDTO.Pagination<ReviewResDTO.GetReviewDTO>> getMyReviews(
             @PathVariable Long memberId,

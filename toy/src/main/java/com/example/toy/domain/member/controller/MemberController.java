@@ -9,6 +9,7 @@ import com.example.toy.domain.member.service.MemberService;
 import com.example.toy.global.apiPayload.ApiResponse;
 import com.example.toy.global.apiPayload.code.BaseSuccessCode;
 import com.example.toy.global.apiPayload.code.GeneralSuccessCode;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,10 @@ public class MemberController {
     @GetMapping("/v1/members/{memberId}")
     public ApiResponse<MemberResDTO.GetInfo> getMyPageProfile(@PathVariable Long memberId) {
         return ApiResponse.onSuccess(MemberSuccessCode.OK, memberService.getProfile(memberId));
+    }
+
+    @PostMapping("/v1/members/signup")
+    public ApiResponse<MemberResDTO.SignUpResult> signUp(@RequestBody @Valid MemberReqDTO.SignUp dto) {
+        return ApiResponse.onSuccess(MemberSuccessCode.CREATED, memberService.signUp(dto));
     }
 }
