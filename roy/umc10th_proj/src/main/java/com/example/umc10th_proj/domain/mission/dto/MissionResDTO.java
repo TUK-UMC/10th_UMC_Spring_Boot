@@ -1,7 +1,6 @@
 package com.example.umc10th_proj.domain.mission.dto;
 
 import lombok.Builder;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -9,14 +8,12 @@ import java.util.List;
 
 public class MissionResDTO {
 
-    // 미션 생성 직후 프론트로 돌려줄 데이터 규격
     @Builder
     public record CreateMissionResult(
             Long missionId,
             LocalDateTime createdAt
     ) {}
 
-    // 가게 내 미션 조회
     @Builder
     public record GetMission(
             Long missionId,
@@ -27,7 +24,6 @@ public class MissionResDTO {
             LocalDateTime createAt
     ) {}
 
-    // 페이지네이션 틀
     @Builder
     public record Pagination<T>(
             List<T> data,
@@ -35,7 +31,6 @@ public class MissionResDTO {
             Integer pageSize
     ){}
 
-    // 홈화면 미션 목록
     @Builder
     public record HomeMissionListResult(
             List<HomeMissionInfo> missionList,
@@ -55,7 +50,6 @@ public class MissionResDTO {
             LocalDate deadline
     ) {}
 
-    // 내 미션 목록 (진행중/완료)
     @Builder
     public record MyMissionListResult(
             List<MyMissionInfo> missionList,

@@ -2,24 +2,22 @@ package com.example.umc10th_proj.domain.member.entity;
 
 import com.example.umc10th_proj.domain.member.enums.TermName;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Table(name = "term")
-
 public class Term {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "term_id")
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     @Enumerated(EnumType.STRING)
     private TermName name;
 }

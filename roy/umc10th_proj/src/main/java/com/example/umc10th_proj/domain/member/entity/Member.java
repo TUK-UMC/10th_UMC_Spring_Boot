@@ -25,11 +25,12 @@ import java.util.List;
 public class Member extends BaseEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // SEQUENCE → IDENTITY 변경
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
-    @Column(name = "name", nullable = false, length = 5)
+    // OAuth 회원은 5자 초과 이름일 수 있으므로 length 확장
+    @Column(name = "name", nullable = false, length = 50)
     private String name;
 
     @Column(name = "gender", nullable = false)
@@ -37,7 +38,8 @@ public class Member extends BaseEntity {
     @Builder.Default
     private Gender gender = Gender.NONE;
 
-    @Column(name = "birth", nullable = false)
+    // OAuth 회원은 생년월일 미제공 가능 → nullable = true
+    @Column(name = "birth", nullable = true)
     private LocalDate birth;
 
     @Column(name = "address", nullable = false)
@@ -45,31 +47,35 @@ public class Member extends BaseEntity {
     @Builder.Default
     private Address address = Address.NONE;
 
-    @Column(name = "detail_address", nullable = false, length = 255)
+    // OAuth 회원은 상세주소 미제공 가능 → nullable = true
+    @Column(name = "detail_address", nullable = true, length = 255)
     private String detailAddress;
 
-    // DB 컬럼명이 social_uid (JPA 생성) — 유지
-    @Column(name = "social_uid", nullable = true, length = 255)
+    // 일반 로그인: email을 uid로 / OAuth: provider uid (NOT NULL)
+    @Column(name = "social_uid", nullable = false, length = 255)
     private String socialUid;
 
-    @Column(name = "social_type", nullable = true)
+    // 일반 로그인: LOCAL / OAuth: KAKAO 등 (NOT NULL, 기본값 LOCAL)
+    @Column(name = "social_type", nullable = false)
     @Enumerated(EnumType.STRING)
-    private SocialType socialType;
+    @Builder.Default
+    private SocialType socialType = SocialType.LOCAL;
 
     @Column(name = "point")
     @Builder.Default
     private Integer point = 0;
 
-    @Column(name = "email", length = 50)
+    // OAuth 회원은 email이 없을 수 있으므로 nullable = true
+    @Column(name = "email", nullable = true, length = 50)
     private String email;
 
-    @Column(name = "password", nullable = false)
+    // OAuth 회원은 비밀번호 없음 → nullable = true
+    @Column(name = "password", nullable = true)
     private String password;
 
     @Column(name = "phone_number", length = 11)
     private String phoneNumber;
 
-    // DB가 varchar(255) — TEXT → varchar(255) 변경
     @Column(name = "profile_url", length = 255)
     private String profileUrl;
 

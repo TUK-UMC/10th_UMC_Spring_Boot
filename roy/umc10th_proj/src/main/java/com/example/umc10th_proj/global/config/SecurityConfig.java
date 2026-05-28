@@ -1,73 +1,88 @@
 package com.example.umc10th_proj.global.config;
 
-import com.example.umc10th_proj.global.security.handler.CustomAccessDenied;
-import com.example.umc10th_proj.global.security.handler.CustomEntryPoint;
+import com.example.umc10th_proj.global.security.filter.JwtAuthFilter;
+import com.example.umc10th_proj.global.security.handler.OAuthSuccessHandler;
+import com.example.umc10th_proj.global.security.service.CustomOAuthService;
+import com.example.umc10th_proj.global.security.service.CustomUserDetailsService;
+import com.example.umc10th_proj.global.security.util.JwtUtil;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod; // 추가된 부분
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
 
+    private final JwtUtil jwtUtil;
+    private final CustomUserDetailsService customUserDetailsService;
+    private final CustomOAuthService customOAuthService;
+
+    // 인증 없이 접근 허용할 URI 목록
     private final String[] allowUris = {
-            // Swagger 및 기본 인증 관련 주소 허용
             "/swagger-ui/**",
             "/swagger-resources/**",
             "/v3/api-docs/**",
-            "/auth/**"
+            "/api/v1/members/signup",   // 회원가입
+            "/api/v1/members/login",    // 로그인
+            "/login",
+            "/logout",
+            "/oauth/authorize",
+            "/oauth/callback/**",
+            "/error"                    // 스프링 에러 응답 허용
     };
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(AbstractHttpConfigurer::disable)
+                // JWT 방식 → 세션 사용하지 않음 (Stateless)
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                )
                 .authorizeHttpRequests(requests -> requests
-                        // 1. 공통 허용 주소 (Swagger 등)
                         .requestMatchers(allowUris).permitAll()
-                        // 2. 회원가입 API (POST /api/v1/members)만 명시적으로 Public 설정
-                        .requestMatchers(HttpMethod.POST, "/api/v1/members").permitAll()
-                        // 3. 그 외의 모든 요청은 Private (로그인 필수)
                         .anyRequest().authenticated()
                 )
-                .formLogin(form -> form
-                        .defaultSuccessUrl("/swagger-ui/index.html", true)
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/login?logout")
-                        .permitAll()
-                )
-                // 예외 상황 핸들러 (이미 구현 완료된 상태)
-                // - 인증 실패(401): CustomEntryPoint가 가로채서 ApiResponse 포맷으로 반환
-                // - 인가 실패(403): CustomAccessDenied가 가로채서 ApiResponse 포맷으로 반환
-                .exceptionHandling(exception -> exception
-                        .accessDeniedHandler(customAccessDenied())
-                        .authenticationEntryPoint(customEntryPoint())
+                // JWT 필터를 UsernamePasswordAuthenticationFilter 앞에 등록
+                .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class)
+                // OAuth2 로그인 설정
+                .oauth2Login(oauth -> oauth
+                        .authorizationEndpoint(auth -> auth
+                                .baseUri("/oauth/authorize")
+                        )
+                        .redirectionEndpoint(redirect -> redirect
+                                .baseUri("/oauth/callback/**")
+                        )
+                        .userInfoEndpoint(userInfo -> userInfo
+                                .userService(customOAuthService)
+                        )
+                        .successHandler(oAuthSuccessHandler())
                 );
 
         return http.build();
     }
 
     @Bean
+    public JwtAuthFilter jwtAuthFilter() {
+        return new JwtAuthFilter(jwtUtil, customUserDetailsService);
+    }
+
+    @Bean
+    public OAuthSuccessHandler oAuthSuccessHandler() {
+        return new OAuthSuccessHandler(jwtUtil);
+    }
+
+    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public CustomAccessDenied customAccessDenied() {
-        return new CustomAccessDenied();
-    }
-
-    @Bean
-    public CustomEntryPoint customEntryPoint() {
-        return new CustomEntryPoint();
     }
 }

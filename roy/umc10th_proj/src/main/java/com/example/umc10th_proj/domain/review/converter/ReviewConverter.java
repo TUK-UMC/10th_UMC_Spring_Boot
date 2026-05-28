@@ -1,15 +1,8 @@
 package com.example.umc10th_proj.domain.review.converter;
 
-import com.example.umc10th_proj.domain.review.dto.ReviewReqDTO;
 import com.example.umc10th_proj.domain.review.dto.ReviewResDTO;
 import com.example.umc10th_proj.domain.review.entity.Review;
-import com.example.umc10th_proj.global.apiPayload.ApiResponse;
-import com.example.umc10th_proj.global.apiPayload.code.GeneralSuccessCode;
-import jakarta.validation.Valid;
 import org.springframework.data.domain.Slice;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -38,7 +31,6 @@ public class ReviewConverter {
         Long nextCursorId = null;
         BigDecimal nextCursorStar = null;
 
-        // 다음 페이지가 있다면 마지막 요소의 값을 다음 커서로 설정
         if (reviewSlice.hasNext() && !reviewInfoList.isEmpty()) {
             ReviewResDTO.MyReviewInfo lastElement = reviewInfoList.get(reviewInfoList.size() - 1);
             nextCursorId = lastElement.reviewId();

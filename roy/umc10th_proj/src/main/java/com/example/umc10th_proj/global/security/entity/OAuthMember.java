@@ -4,16 +4,23 @@ import com.example.umc10th_proj.domain.member.entity.Member;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
-@Getter
 @RequiredArgsConstructor
-public class AuthMember implements UserDetails {
+public class OAuthMember implements OAuth2User {
 
+    @Getter
     private final Member member;
+    private final Map<String, Object> attributes;
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return attributes;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -21,12 +28,7 @@ public class AuthMember implements UserDetails {
     }
 
     @Override
-    public String getPassword() {
-        return member.getPassword();
-    }
-
-    @Override
-    public String getUsername() {
+    public String getName() {
         return member.getSocialUid();
     }
 }

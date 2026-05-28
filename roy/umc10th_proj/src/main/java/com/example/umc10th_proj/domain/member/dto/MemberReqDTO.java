@@ -5,25 +5,38 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Getter;
-import java.time.LocalDate;
+
 import java.util.List;
 
 public class MemberReqDTO {
 
-    // 기존에 있던 GetInfo 레코드
+    // 마이페이지 조회용
     @Builder
     public record GetInfo(
             Long id
-    ){}
+    ) {}
 
+    // 진행중인 미션 조회용
     @Getter
     public static class GetMyInProgressMissionsDto {
+        @NotNull(message = "사용자 ID는 필수입니다.")
         private Long memberId;
     }
 
-    // 새로 추가된 회원가입용 DTO
+    // 로그인용
+    @Getter
+    public static class LoginDto {
+        @NotBlank(message = "이메일은 필수입니다.")
+        private String email;
+
+        @NotBlank(message = "비밀번호는 필수입니다.")
+        private String password;
+    }
+
+    // 회원가입용
     @Getter
     public static class JoinDto {
+
         @NotBlank(message = "이메일은 필수입니다.")
         private String email;
 
@@ -34,7 +47,7 @@ public class MemberReqDTO {
         private String name;
 
         @NotNull(message = "성별을 선택해주세요.")
-        private Integer gender; // 1: 남, 2: 여, 3: 선택안함
+        private Integer gender;
 
         @NotNull(message = "생년은 필수입니다.")
         private Integer birthYear;
@@ -51,10 +64,12 @@ public class MemberReqDTO {
         @NotBlank(message = "상세 주소는 필수입니다.")
         private String detailAddress;
 
+        @NotNull(message = "약관 동의 목록은 필수입니다.")
         @Size(min = 1, message = "최소 1개 이상의 약관에 동의해야 합니다.")
-        private List<Long> agreeTerms; // 동의한 약관 ID 리스트
+        private List<Long> agreeTerms;
 
+        @NotNull(message = "선호 음식 목록은 필수입니다.")
         @Size(min = 1, message = "최소 1개 이상의 선호 음식을 선택해야 합니다.")
-        private List<Long> preferFoods; // 선호 음식 ID 리스트
+        private List<Long> preferFoods;
     }
 }

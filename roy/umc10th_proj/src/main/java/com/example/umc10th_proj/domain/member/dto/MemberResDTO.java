@@ -13,11 +13,16 @@ public class MemberResDTO {
             String email,
             String phoneNumber,
             Integer point
-    ){}
+    ) {}
 
-     @Builder
-     public record JoinResult(
-             Long memberId,
-             LocalDateTime createdAt
-     ){}
+    @Builder
+    public record JoinResult(
+            Long memberId,
+            LocalDateTime createdAt
+    ) {}
+
+    @Builder
+    public record Login(
+            String accessToken
+    ) {}
 }
