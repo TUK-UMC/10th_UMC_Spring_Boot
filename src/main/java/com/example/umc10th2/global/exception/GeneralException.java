@@ -1,0 +1,14 @@
+package com.example.umc10th2.global.exception;
+
+import lombok.Getter;
+
+@Getter
+public class GeneralException extends RuntimeException {
+
+    private final BaseErrorCode errorCode;
+
+    public GeneralException(BaseErrorCode errorCode) {
+        super(errorCode.getMessage());
+        this.errorCode = errorCode;
+    }
+}
