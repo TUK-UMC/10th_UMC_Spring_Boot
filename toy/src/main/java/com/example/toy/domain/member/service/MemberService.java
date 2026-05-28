@@ -13,6 +13,8 @@ import com.example.toy.domain.member.exception.code.MemberErrorCode;
 import com.example.toy.domain.member.repository.FoodRepository;
 import com.example.toy.domain.member.repository.MemberRepository;
 import com.example.toy.domain.member.repository.TermRepository;
+import com.example.toy.global.entity.AuthMember;
+import com.example.toy.global.security.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -28,14 +30,15 @@ public class MemberService {
     private final FoodRepository foodRepository;
     private final TermRepository termRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
     public String singleParameter(String singleParameter) {
         return singleParameter;
     }
 
-    public MemberResDTO.GetInfo getInfo(MemberReqDTO.GetInfo dto) {
-        Long memberId = dto.id();
-        return getProfile(memberId);
+    public MemberResDTO.GetInfo getInfo(AuthMember member) {
+        return MemberConverter.toGetInfo(member.getMember());
+
     }
 
     public MemberResDTO.GetInfo getProfile(Long memberId) {
@@ -75,5 +78,28 @@ public class MemberService {
         }
 
         return MemberConverter.toSignUpResult(member);
+    }
+
+    @Transactional
+    public MemberResDTO.LoginResult login(MemberReqDTO.Login dto) {
+
+        Member member = memberRepository.findByEmail(dto.getEmail())
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 회원입니다."));
+
+        // 비밀번호 검증
+        if (!passwordEncoder.matches(dto.getPassword(), member.getPassword())) {
+            throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
+        }
+
+        // AuthMember 생성
+        AuthMember authMember = new AuthMember(member);
+
+        // AccessToken 생성
+        String accessToken = jwtUtil.createAccessToken(authMember);
+
+        return MemberResDTO.LoginResult.builder()
+                .memberId(member.getId())
+                .accessToken(accessToken)
+                .build();
     }
 }

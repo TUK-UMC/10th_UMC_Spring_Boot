@@ -26,4 +26,12 @@ public class MemberResDTO {
         private Long memberId;
         private LocalDateTime createdAt;
     }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class LoginResult {
+        private Long memberId;
+        private String accessToken;
+    }
 }
