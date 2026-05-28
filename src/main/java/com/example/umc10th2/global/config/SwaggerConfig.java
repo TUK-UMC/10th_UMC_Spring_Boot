@@ -2,39 +2,27 @@ package com.example.umc10th2.global.config;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
-import io.swagger.v3.oas.models.info.Info;              // ✅ 수정
-import io.swagger.v3.oas.models.servers.Server;        // ✅ 수정
-import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration   // ✅ 여기 하나만 있으면 됨
+@Configuration
 public class SwaggerConfig {
 
     @Bean
-    public OpenAPI swagger() {
-        Info info = new Info()
-                .title("UMC10th")
-                .description("10기 Swagger")
-                .version("0.0.1");
-
-        String securityScheme = "JWT TOKEN";
-
-        SecurityRequirement securityRequirement =
-                new SecurityRequirement().addList(securityScheme);
-
-        Components components = new Components()
-                .addSecuritySchemes(securityScheme, new SecurityScheme()
-                        .name(securityScheme)
-                        .type(SecurityScheme.Type.HTTP)
-                        .scheme("Bearer")
-                        .bearerFormat("JWT"));
-
+    public OpenAPI openAPI() {
         return new OpenAPI()
-                .info(info)
-                .addServersItem(new Server().url("/"))
-                .addSecurityItem(securityRequirement)
-                .components(components);
+                .info(new Info()
+                        .title("UMC 10th Spring Boot API")
+                        .version("v1.0")
+                        .description("UMC 10th 스터디 Spring Boot 프로젝트 API 문서"))
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth",
+                                new SecurityScheme()
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")
+                                        .name("bearerAuth")));
     }
 }

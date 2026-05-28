@@ -25,4 +25,25 @@ public class MemberConverter {
                 .email(member.getEmail())
                 .build();
     }
+
+    // ✅ 로그인 응답 변환 (JWT 토큰 포함)
+    public static MemberResDTO.LoginResponse toLoginResponse(String accessToken) {
+        return MemberResDTO.LoginResponse.builder()
+                .accessToken(accessToken)
+                .tokenType("Bearer")
+                .build();
+    }
+
+    // ✅ 마이페이지 응답 변환
+    public static MemberResDTO.MyPageResponse toMyPageResponse(Member member) {
+        return MemberResDTO.MyPageResponse.builder()
+                .memberId(member.getId())
+                .name(member.getName())
+                .email(member.getEmail())
+                .phoneNum(member.getPhoneNum())
+                .address(member.getAddress())
+                .birthDate(member.getBirthDate())
+                .point(member.getPoint())
+                .build();
+    }
 }
